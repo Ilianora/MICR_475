@@ -1,0 +1,39 @@
+---
+title: "*HW3*"
+output: github_document
+---
+
+# Open libraries
+Open library and data that we want to work with.
+
+```{r Open libraries}
+library(tidyverse)
+install.packages("babynames",repos = "http://cran.us.r-project.org")
+library(babynames)
+```
+
+# Separate data for use 
+Examine the dataset, then decide what our hypothesis will be. For mine, I predict that the name Margaret's usage will decrease with time.
+
+```{r Examine data and create new data}
+glimpse(babynames)
+margaret <- babynames %>%
+  select(year, name, n) %>%
+  filter(name %in% "Margaret")
+glimpse(margaret)
+```
+
+# Plotting
+
+Plot the dataset.
+
+```{r Plotting}
+
+ggplot(data = margaret, aes(x = year, y = n, color = "name")) +
+  geom_line() +
+  labs (title = "Popularity of Margaret", x = "Year", y = "Number of People Named Margaret") +
+  theme(legend.position = "none")
+```
+
+# Results
+The name Margaret peaks around the 1920s and then decreases, and the nincreases again around the 50s. The name becomes less and less frequently observed by the 2000s.
