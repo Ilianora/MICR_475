@@ -1,0 +1,79 @@
+---
+title: "**Homework 5**"
+output: github_document
+---
+
+# Open libraries
+
+```{r}
+library(tidyverse)
+#glimpse(diamonds)
+```
+
+# Step 1: Data frame manipulation
+Print a data frame that contains the simple count of diamonds in each "cut" ("Fair", "Good", etc.)
+
+```{r}
+diamonds %>%
+  group_by(cut) %>%
+  count()
+```
+
+# Step 2: Subset data
+Randomly subset the data to 1% using dplyr functions.
+
+```{r}
+subset_diamonds <- sample_frac(diamonds, 0.01)
+head(subset_diamonds)
+```
+
+# Step 3: Calculation
+Calculate the average size of the largest 100 diamonds in each clarity category.
+
+```{r}
+diamonds %>%
+  group_by(clarity) %>%
+  count()
+#Large diamonds
+large_diamonds <- diamonds %>%
+  arrange(desc(carat)) %>%
+  group_by(clarity) %>%
+  slice(1:100)
+large_diamonds
+#Calculate average size
+large_diamonds %>%
+  group_by(clarity) %>%
+  summarise(average.size = mean(carat, na.rm = T))
+```
+
+# Step 4: Scatterplots
+Scatterplot 1: a plot of the x dimension vs the y dimension
+Scatterplot 2: a plot of the x dimension vs the z dimension
+
+```{r}
+ggplot(diamonds) +
+  geom_point(aes(x = y, y = x)) +
+  labs(title = "Diamond Dimensions: X vs Y", x = "Length (y)", y = "Width (x)")
+ggplot(diamonds) +
+  geom_point(aes(x = z, y = x)) +
+  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Width (x)")
+#Note that there are suspicious data points
+```
+
+# Step 5: Remove suspicious data points and re-plot data
+
+```{r}
+# X vs Y
+diamonds_xy <- diamonds %>%
+  filter(x > 3 & y < 20)
+ggplot(diamonds_xy) +
+  geom_point(aes(x = y, y = x)) +
+  labs(title = "Diamond Dimensions: X vs Y", x = "Length (y)", y = "Width (x)")
+#  X vs Z
+diamond_xz <- diamonds %>%
+  filter(x > 3 & z < 8 & z > 1)
+ggplot(diamond_xz) +
+  geom_point(aes(x = z, y = x)) +
+  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Width (x)")
+```
+
