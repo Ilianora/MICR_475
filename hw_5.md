@@ -55,12 +55,12 @@ head(subset_diamonds)
     ## # A tibble: 6 x 10
     ##   carat cut       color clarity depth table price     x     y     z
     ##   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
-    ## 1  1.25 Good      I     SI2      63.3  55.8  5197  6.83  6.87  4.34
-    ## 2  1.51 Very Good G     VS1      62.9  58   13378  7.32  7.41  4.63
-    ## 3  0.47 Premium   G     SI1      62.7  58     995  4.99  4.97  3.12
-    ## 4  2.08 Premium   I     VVS1     62.2  58   15654  8.22  8.18  5.1 
-    ## 5  0.35 Ideal     I     VVS1     61.6  55     628  4.55  4.58  2.81
-    ## 6  0.32 Ideal     G     VS1      62.3  56     828  4.39  4.37  2.73
+    ## 1  1.23 Premium   G     VS2      61.1    57  8128  6.96  6.91  4.24
+    ## 2  1.63 Very Good I     SI1      62      54  9090  7.6   7.67  4.73
+    ## 3  3.65 Fair      H     I1       67.1    53 11668  9.53  9.48  6.38
+    ## 4  0.31 Very Good F     VS2      62.9    59   625  4.27  4.32  2.7 
+    ## 5  1.03 Very Good F     VVS2     61.5    55  8998  6.48  6.57  4.01
+    ## 6  1.26 Very Good F     IF       60      60 14095  7.04  7.09  4.24
 
 # Step 3: Calculation
 
@@ -138,7 +138,7 @@ Scatterplot 1: a plot of the x dimension vs the y dimension Scatterplot
 ``` r
 ggplot(diamonds) +
   geom_point(aes(x = y, y = x)) +
-  labs(title = "Diamond Dimensions: X vs Y", x = "Length (y)", y = "Width (x)")
+  labs(title = "Diamond Dimensions: X vs Y", x = "Width (y)", y = "Length (x)")
 ```
 
 ![](hw_5_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
@@ -146,7 +146,7 @@ ggplot(diamonds) +
 ``` r
 ggplot(diamonds) +
   geom_point(aes(x = z, y = x)) +
-  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Width (x)")
+  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Length (x)")
 ```
 
 ![](hw_5_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
@@ -163,7 +163,7 @@ diamonds_xy <- diamonds %>%
   filter(x > 3 & y < 20)
 ggplot(diamonds_xy) +
   geom_point(aes(x = y, y = x)) +
-  labs(title = "Diamond Dimensions: X vs Y", x = "Length (y)", y = "Width (x)")
+  labs(title = "Diamond Dimensions: X vs Y", x = "Width (y)", y = "Length (x)")
 ```
 
 ![](hw_5_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
@@ -174,7 +174,7 @@ diamond_xz <- diamonds %>%
   filter(x > 3 & z < 8 & z > 1)
 ggplot(diamond_xz) +
   geom_point(aes(x = z, y = x)) +
-  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Width (x)")
+  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Length (x)")
 ```
 
 ![](hw_5_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->

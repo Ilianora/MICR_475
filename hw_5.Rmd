@@ -53,10 +53,10 @@ Scatterplot 2: a plot of the x dimension vs the z dimension
 ```{r}
 ggplot(diamonds) +
   geom_point(aes(x = y, y = x)) +
-  labs(title = "Diamond Dimensions: X vs Y", x = "Length (y)", y = "Width (x)")
+  labs(title = "Diamond Dimensions: X vs Y", x = "Width (y)", y = "Length (x)")
 ggplot(diamonds) +
   geom_point(aes(x = z, y = x)) +
-  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Width (x)")
+  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Length (x)")
 #Note that there are suspicious data points
 ```
 
@@ -68,12 +68,12 @@ diamonds_xy <- diamonds %>%
   filter(x > 3 & y < 20)
 ggplot(diamonds_xy) +
   geom_point(aes(x = y, y = x)) +
-  labs(title = "Diamond Dimensions: X vs Y", x = "Length (y)", y = "Width (x)")
+  labs(title = "Diamond Dimensions: X vs Y", x = "Width (y)", y = "Length (x)")
 #  X vs Z
 diamond_xz <- diamonds %>%
   filter(x > 3 & z < 8 & z > 1)
 ggplot(diamond_xz) +
   geom_point(aes(x = z, y = x)) +
-  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Width (x)")
+  labs(title = "Diamond Dimensions: X vs Z", x = "Depth (z)", y = "Length (x)")
 ```
 
