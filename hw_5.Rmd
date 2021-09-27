@@ -5,7 +5,7 @@ output: github_document
 
 # Open libraries
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
 #glimpse(diamonds)
 ```
@@ -13,7 +13,7 @@ library(tidyverse)
 # Step 1: Data frame manipulation
 Print a data frame that contains the simple count of diamonds in each "cut" ("Fair", "Good", etc.)
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 diamonds %>%
   group_by(cut) %>%
   count()
@@ -22,7 +22,7 @@ diamonds %>%
 # Step 2: Subset data
 Randomly subset the data to 1% using dplyr functions.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 subset_diamonds <- sample_frac(diamonds, 0.01)
 head(subset_diamonds)
 ```
@@ -30,7 +30,7 @@ head(subset_diamonds)
 # Step 3: Calculation
 Calculate the average size of the largest 100 diamonds in each clarity category.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 diamonds %>%
   group_by(clarity) %>%
   count()
@@ -50,7 +50,7 @@ large_diamonds %>%
 Scatterplot 1: a plot of the x dimension vs the y dimension
 Scatterplot 2: a plot of the x dimension vs the z dimension
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 ggplot(diamonds) +
   geom_point(aes(x = y, y = x)) +
   labs(title = "Diamond Dimensions: X vs Y", x = "Width (y)", y = "Length (x)")
@@ -62,7 +62,7 @@ ggplot(diamonds) +
 
 # Step 5: Remove suspicious data points and re-plot data
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # X vs Y
 diamonds_xy <- diamonds %>%
   filter(x > 3 & y < 20)

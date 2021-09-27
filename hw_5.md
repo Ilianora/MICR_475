@@ -5,20 +5,6 @@
 
 ``` r
 library(tidyverse)
-```
-
-    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-
-    ## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-    ## ✓ tibble  3.0.6     ✓ dplyr   1.0.4
-    ## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-    ## ✓ readr   1.4.0     ✓ forcats 0.5.1
-
-    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
-
-``` r
 #glimpse(diamonds)
 ```
 
@@ -55,12 +41,12 @@ head(subset_diamonds)
     ## # A tibble: 6 x 10
     ##   carat cut       color clarity depth table price     x     y     z
     ##   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
-    ## 1  1.23 Premium   G     VS2      61.1    57  8128  6.96  6.91  4.24
-    ## 2  1.63 Very Good I     SI1      62      54  9090  7.6   7.67  4.73
-    ## 3  3.65 Fair      H     I1       67.1    53 11668  9.53  9.48  6.38
-    ## 4  0.31 Very Good F     VS2      62.9    59   625  4.27  4.32  2.7 
-    ## 5  1.03 Very Good F     VVS2     61.5    55  8998  6.48  6.57  4.01
-    ## 6  1.26 Very Good F     IF       60      60 14095  7.04  7.09  4.24
+    ## 1  2.01 Very Good I     SI2      61.4    63 10009  8.19  7.96  4.96
+    ## 2  2.28 Premium   H     SI2      62.1    59 18055  8.44  8.4   5.23
+    ## 3  0.62 Fair      F     VVS2     57.1    60  2088  5.65  5.7   3.24
+    ## 4  0.91 Fair      F     VS2      66.8    58  3837  5.95  5.97  3.98
+    ## 5  0.27 Ideal     I     VVS2     61.6    55   480  4.17  4.21  2.58
+    ## 6  0.35 Very Good G     VVS2     62.8    58   798  4.44  4.48  2.8
 
 # Step 3: Calculation
 
