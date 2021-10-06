@@ -33,18 +33,19 @@ This plot breaks Tufte's (section 2) principle of presenting correct data. This 
 
 ```{r}
 bp <- ggplot(data = summarize_genusgrp, aes(x = Genus, y = meanRA, fill = TRT))
-bp + geom_bar(aes(color = Genus, alpha = 0.5), stat="identity", position="stack") +
+bp <- bp + geom_bar(aes(color = Genus, alpha = 0.5), stat="identity", position="stack") +
   scale_y_continuous(name = "Mean Relative Abundance") +
   theme(legend.position = "bottom") +
-  geom_errorbar(aes(x = Genus, ymin = meanRA-sdRA, ymax = meanRA+sdRA), width = 0.5, color = "orange", alpha = 0.9, size = 1.0) 
+  geom_errorbar(aes(x = Genus, ymin = meanRA-sdRA, ymax = meanRA+sdRA), width = 0.5, color = "orange", alpha = 0.9, size = 1.0)
 ```
 
-![badplot](https://github.com/Ilianora/MICR_475/blob/main/badplot_proj.pdf)
+![badplotex](badplot_proj.png)
 
 # Phyloseq
 
 Necessary for my "good plot".
 
+```{r, eval = FALSE}
 metadata <- read.csv("metadata.csv")
 seqtab.nochim <- read.csv("seqtabnochim.csv")
 sample_data <- read.csv("sampledata.csv")
@@ -77,14 +78,6 @@ for (i in 1:nrow(tax.clean)) {
   }
 }
 tax_table(ps.f) <- as.matrix(tax.clean)
-
-
-
-# Good plot
-
-If you'd like to make a "better" standard barplot, you could do something along the lines of this. I would not argue that this is the best option, but the best option is a little over my head right now (I'd prefer some kind of geom_boxplot). We can see the top 10 genera, for each treatment. At least here, we also use colorblind friendly colors as well with the viridis package.
-
-
 ps1g.10 <- merge_samples(ps.f, "TRT")
 ps1g.10 <- transform_sample_counts(ps1g.10, function (x) 100* x / sum(x))
 ps2g.10 <- tax_glom(ps1g.10, "Genus", NArm=TRUE)
@@ -104,5 +97,6 @@ abundplotgenus.10 <- ggplot(dfg.10, aes(Sample, Abundance, fill = Genus)) +
   guides(fill=guide_legend(nrow=5))
 
 abundplotgenus.10
+```
 
-![gplot_ex](https://github.com/Ilianora/MICR_475/blob/main/gplot_ex.pdf)
+![goodplotex](gplot_ex (1).png)
